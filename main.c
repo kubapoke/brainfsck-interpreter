@@ -19,17 +19,14 @@ void usage(char* pname)
 int main(int argc, char **argv)
 {
     int c, max_instructions_size = MAX_INSTRUCTIONS_SIZE_DEFAULT, max_cells_size = MAX_CELLS_SIZE_DEFAULT, verbose_mode = 0;
-    char *file_name, *input_file_name = NULL;
+    char *file_name;
 
-    while((c = getopt(argc, argv, "n:f:i:c:v")) != -1)
+    while((c = getopt(argc, argv, "n:i:c:v")) != -1)
     {
         switch (c)
         {
         case 'n':
             file_name = optarg;
-            break;
-        case 'f':
-            input_file_name = optarg;
             break;
         case 'i':
             max_instructions_size = atoi(optarg);
