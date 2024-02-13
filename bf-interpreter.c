@@ -20,7 +20,7 @@ int bf_interpreter_main(char *file_name, int max_instructions_size, int max_cell
     zero_fill(cells, max_cells_size);
     read_file(file_name, instructions, max_instructions_size);
     fill_bracket_array(instructions, brackets);
-    interpret(instructions, cells, brackets, max_cells_size);
+    interpret(instructions, cells, brackets, max_cells_size, verbose_mode);
 
     free(instructions);
     free(cells);
@@ -96,7 +96,7 @@ void fill_bracket_array(char *instructions, int *brackets)
     free(top);
 }
 
-void interpret(char *instructions, char *cells, int *brackets, int max_cells_size)
+void interpret(char *instructions, char *cells, int *brackets, int max_cells_size, int verbose_mode)
 {
     int instruction_pointer = 0, cell_pointer = 0, used_cells = 0;
 
@@ -147,6 +147,13 @@ void interpret(char *instructions, char *cells, int *brackets, int max_cells_siz
             ERR("invalid symbol loaded");
         }
 
+        if(verbose_mode)
+        {
+            fprintf(stdout, "%s", "\n");
+            write_state(instructions, cells, used_cells, instruction_pointer, cell_pointer);
+            fprintf(stdout, "%s", "\n");
+        }
+
         instruction_pointer++;
     }   
 }
@@ -155,4 +162,35 @@ void zero_fill(char *cells, int max_cells_size)
 {
     for(int i = 0; i < max_cells_size; ++i)
         cells[i] = 0;
+}
+
+void write_state(char *instructions, char *cells, int used_cells, int instruction_pointer, int cell_pointer)
+{
+    for(int i = 0; i < strlen(instructions); ++i)
+    {
+        fprintf(stdout, "%c", instructions[i]);
+    }
+    fprintf(stdout, "%c", '\n');
+    for(int i = 0; i < instruction_pointer; ++i)
+    {
+        fprintf(stdout, "%c", ' ');
+    }
+    fprintf(stdout, "%s", "^\n\n");
+    for(int i = 0; i < used_cells; ++i)
+    {
+        fprintf(stdout, "%c", replace_with_space(cells[i]));
+    }
+    fprintf(stdout, "%c", '\n');
+    for(int i = 0; i < cell_pointer; ++i)
+    {
+        fprintf(stdout, "%c", ' ');
+    }
+    fprintf(stdout, "%s", "^\n");
+}
+
+char replace_with_space(char c)
+{
+    if(c < 32 || c == 127)
+        return ' ';
+    return c;
 }

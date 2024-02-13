@@ -9,7 +9,9 @@
 int bf_interpreter_main(char*, int, int, int);
 void read_file(char*, char*, int);
 void fill_bracket_array(char*, int*);
-void interpret(char*, char*, int*, int);
+void interpret(char*, char*, int*, int, int);
 void zero_fill(char*, int);
+void write_state(char*, char*, int, int, int);
+char replace_with_space(char);
 
 #endif /* BF_INTERPRETER_ */
