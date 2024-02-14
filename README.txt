@@ -17,4 +17,3 @@ OTHER OPTIONS:
 -c <max number of cells> - Limits or increases maximum number of workable cells (2^15 by default)
 
 -v - The interpreter enters verbose mode, in which it displays current position in instruction and working arrays. Doesn't work great if either is too large
-
