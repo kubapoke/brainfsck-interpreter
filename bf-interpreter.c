@@ -25,6 +25,8 @@ int bf_interpreter_main(char *file_name, int max_instructions_size, int max_cell
     free(instructions);
     free(cells);
     free(brackets);
+
+    return EXIT_SUCCESS;
 }
 
 void read_file(char *file_name, char *instructions, int max_instructions_size)
