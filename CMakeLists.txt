@@ -7,3 +7,5 @@ add_executable(
         bf-interpreter.c
         main.c
 )
+
+target_include_directories(bf-interpreter PRIVATE .)
