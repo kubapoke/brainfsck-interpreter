@@ -1,9 +1,7 @@
 #include<stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include<unistd.h>
 #include "bf-interpreter.h"
-#include "stack.h"
 
 #define ERR(source) (perror(source), fprintf(stderr, "%s:%d\n", __FILE__, __LINE__), exit(EXIT_FAILURE))
 #define MAX_INSTRUCTIONS_SIZE_DEFAULT 32768
@@ -29,12 +27,18 @@ int main(int argc, char **argv)
             file_name = optarg;
             break;
         case 'i':
-            max_instructions_size = atoi(optarg);
+            max_instructions_size = strtol(optarg, NULL, 10);
+            if(errno != 0 && (max_instructions_size == 0 ||
+            max_instructions_size == LONG_MAX || max_instructions_size == LONG_MIN))
+                ERR("strtol");
             if(max_instructions_size <=0 || max_instructions_size > MAX_ALLOCATION_VALUE)
                 usage(argv[0]);
             break;
         case 'c':
-            max_cells_size = atoi(optarg);
+            max_cells_size = strtol(optarg, NULL, 10);
+            if(errno != 0 && (max_instructions_size == 0 ||
+            max_instructions_size == LONG_MAX || max_instructions_size == LONG_MIN))
+                ERR("strtol");
             if(max_cells_size <=0 || max_cells_size > MAX_ALLOCATION_VALUE)
                 usage(argv[0]);
             break;

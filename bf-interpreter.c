@@ -56,7 +56,7 @@ void read_file(char *file_name, char *instructions, int max_instructions_size)
         ERR("fclose");
 }
 
-void fill_bracket_array(char *instructions, int *brackets)
+void fill_bracket_array(const char *instructions, int *brackets)
 {
     st_node *top;
     if((top = malloc(sizeof(st_node))) == NULL)
@@ -98,7 +98,7 @@ void fill_bracket_array(char *instructions, int *brackets)
     free(top);
 }
 
-void interpret(char *instructions, char *cells, int *brackets, int max_cells_size, int verbose_mode)
+void interpret(char *instructions, char *cells, const int *brackets, int max_cells_size, int verbose_mode)
 {
     int instruction_pointer = 0, cell_pointer = 0, used_cells = 0;
 
@@ -133,7 +133,7 @@ void interpret(char *instructions, char *cells, int *brackets, int max_cells_siz
             fputc(cells[cell_pointer], stdout);
             break;
         case ',':
-            cells[cell_pointer] = fgetc(stdin);
+            cells[cell_pointer] = (char)fgetc(stdin);
             if(cell_pointer >= max_cells_size || cell_pointer < 0)
                 ERR("cell pointer out of range");
             break;
