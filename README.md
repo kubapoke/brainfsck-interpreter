@@ -12,7 +12,10 @@ expanded in the future.
 The program should run on any operational system which supports the C language,
 it has been tested on Windows 10 and the Ubuntu distribution of Linux.
 
-Install the program by running `git clone` on this repository.
+Install the program by running `git clone` on this repository:
+```shell
+git clone https://github.com/kubapoke/brainfsck-interpreter
+```
 Subsequently, run:
 ```shell
 cmake <project-directory-path>
@@ -34,7 +37,7 @@ Note, that the `-n` option is required.
 |       Path       |   -n   |            Path to the appropriate .bf file             |       YES      |    NO    |    -    |
 | Max instructions |   -i   | Maximum number of instructions in the provided .bf file |      YES       |    YES   |   2^15  |
 |     Max cells    |   -c   |             Maximum number of working cells             |       YES      |    YES   |   2^15  |
-|    Visual mode   |   -v   |             Launches program in visual mode             |       NO       |    YES   |   OFF   |
+|    Visual mode   |   -v   |     Launches program in [visual mode](#Visual-mode)     |       NO       |    YES   |   OFF   |
 
 ## Visual mode
 If the `-v` flag is used, the program will enter visual mode. While the visual mode is active,
