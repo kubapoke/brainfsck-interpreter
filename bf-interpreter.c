@@ -58,8 +58,8 @@ void read_file(char *file_name, char *instructions, int max_instructions_size)
 
 void fill_bracket_array(const char *instructions, int *brackets)
 {
-    st_node *top;
-    if((top = malloc(sizeof(st_node))) == NULL)
+    st_node_t *top;
+    if((top = malloc(sizeof(st_node_t))) == NULL)
         ERR("malloc");
 
     init(top);
@@ -83,15 +83,6 @@ void fill_bracket_array(const char *instructions, int *brackets)
         }
     }
 
-    /*
-    for(int i = 0; instructions[i] != '\0'; ++i)
-        printf("%c ", instructions[i]);
-    printf("\n\n");
-    for(int i = 0; instructions[i] != '\0'; ++i)
-        printf("%d ", brackets[i]);
-    printf("\n\n");
-    */
-
     if(!empty(top))
         ERR("not enough closing brackets");
 
@@ -104,7 +95,6 @@ void interpret(char *instructions, char *cells, const int *brackets, int max_cel
 
     while (instructions[instruction_pointer] != '\0')
     {
-        // printf("%d ", instruction_pointer);
         switch (instructions[instruction_pointer])
         {
         case '+':

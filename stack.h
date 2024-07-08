@@ -6,14 +6,14 @@
 #include <string.h>
 #include<unistd.h>
 
-typedef struct stack_node_t{
+typedef struct stack_node{
     int val;
-    struct stack_node_t *prev;
-} st_node;
+    struct stack_node *prev;
+} st_node_t;
 
-void init(st_node*);
-void push(st_node**, int);
-int pop(st_node**);
-int empty(st_node*);
+void init(st_node_t*);
+void push(st_node_t**, int);
+int pop(st_node_t**);
+int empty(st_node_t*);
 
 #endif /* STACK_ */
