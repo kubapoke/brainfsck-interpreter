@@ -1,4 +1,5 @@
-# Introduction
+# Brainfsck interpreter
+## Introduction
 The project is a simple brainfsck interpreter written in C.
 
 It provides basic functionality of interpreting provided brainfsck files, along with
