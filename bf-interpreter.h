@@ -4,7 +4,6 @@
 #include<stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include<unistd.h>
 
 int bf_interpreter_main(char*, int, int, int);
 void read_file(char*, char*, int);
