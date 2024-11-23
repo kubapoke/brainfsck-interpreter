@@ -6,6 +6,7 @@ add_executable(
         stack.c
         bf-interpreter.c
         main.c
+        argument-parser.c
 )
 
 target_include_directories(bf-interpreter PRIVATE .)
